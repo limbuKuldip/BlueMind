@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836826104174",
+    "firebase_url": "https://blue-mind.firebaseio.com",
+    "project_id": "blue-mind",
+    "storage_bucket": "blue-mind.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836826104174:android:122d238a20687e1d",
+        "android_client_info": {
+          "package_name": "com.bluemind.bluemind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836826104174-j8pfdbogq14krp25m1v75jr575fv60mi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bluemind.bluemind",
+            "certificate_hash": "088dd369a41c2a3ac846be13ccf65b8802074923"
+          }
+        },
+        {
+          "client_id": "836826104174-a62u8t4cfftlrd0ce7f2vqg2jt746k4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaASYtlP8Ti4Donr3SQIUYgOlc2k6xuVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836826104174-a62u8t4cfftlrd0ce7f2vqg2jt746k4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

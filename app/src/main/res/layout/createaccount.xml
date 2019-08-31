@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="14"
+            android:hint="@string/firstName"
+            android:textAlignment="center"
+            android:id="@+id/firstName"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="14"
+            android:hint="@string/lastName"
+            android:textAlignment="center"
+            android:id="@+id/lastName"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="14"
+            android:hint="@string/username"
+            android:textAlignment="center"
+            android:id="@+id/userName"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="14"
+            android:hint="@string/password"
+            android:textAlignment="center"
+            android:id="@+id/userPassword"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="14"
+            android:hint="@string/email"
+            android:textAlignment="center"
+            android:id="@+id/email"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="14"
+            android:hint="@string/phoneNumber"
+            android:textAlignment="center"
+            android:id="@+id/phoneNumber"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:id="@+id/createButton"
+            android:text="@string/create"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

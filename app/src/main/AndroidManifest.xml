@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bluemind.bluemind">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".UserLogin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".IdentifyMe"
+            android:label="Identify Me">
+        </activity>
+        <activity android:name=".IdentifyMe2"
+            android:label="Identify Me"/>
+        <activity android:name=".IdentifyMe3"
+            android:label="Identify Me"/>
+        <activity android:name=".IdentifyMeSplashScreen"
+            android:label="Identify Me"/>
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".CreateAccount"
+            android:label="Create Account">
+        </activity>
+        <activity
+            android:name=".ActivityList"
+            android:label="Activity">
+        </activity>
+        <activity android:name=".ChatForum"
+            android:label="Messages"/>
+        <activity
+            android:name=".Splash"
+            android:label="Blue Mind" />
+        <activity
+            android:name=".ChallengesList"
+            android:label="Challenges" />
+        <activity
+            android:name=".ViewButton"
+            android:label="Blue Mind" />
+        <activity
+            android:name=".CompleteButton"
+            android:label="Blue Mind" />
+        <activity
+            android:name=".ReviewScreen"
+            android:label="Blue Mind" />
+        <activity android:name=".ExpertConsultation"
+            android:label="Expert Consultation"/>
+        <activity android:name=".ExpertsDetails"
+            android:label="Experts Details"/>
+        <activity android:name=".groupchannel.GroupChannelActivity"
+            android:label="Chat Forum"/>
+        <activity android:name=".groupchannel.CreateGroupChannelActivity"/>
+        <activity android:name=".SetTimeFrame"
+            android:label="Breathing Activity"/>
+        <activity android:name=".BreathingActivity"
+            android:label="Breathing Activity"/>
+        <activity android:name=".BreathingExercise"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewtitle"
+            android:text="@string/viewTitle"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewDescription"
+            android:text="@string/viewDescription"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewcontent"
+            android:text="@string/activityone"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:layout_marginTop="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewRequirement"
+            android:text="@string/viewRequirements"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uploadPictures"
+            android:text="@string/uploadPictures"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uploadActicityData"
+            android:text="@string/uploadActivityData"
+            android:layout_marginLeft="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uploadStepCount"
+            android:text="@string/uploadStepCount"
+            android:layout_marginLeft="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uploadMileageCount"
+            android:text="@string/uploadMileageCount"
+            android:layout_marginLeft="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/otherRequirements"
+            android:text="@string/otherRequirements"
+            android:layout_marginLeft="10sp"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

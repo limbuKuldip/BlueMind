@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_frame"
+            android:text="@string/setTimeFrame"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exercise_time_frame"
+            android:text="@string/exerciseTimeFrame"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/minutesFirst"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/minutesSecond"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/secondsFirst"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/secondsSecond"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/setTime"
+            android:id="@+id/breathing_activity_continue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inhaleAndExhale"
+            android:id="@+id/inhaleExhale"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/InhaleMinutesFirst"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/InhaleMinutesSecond"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/semicolon"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/InhaleSecondsFirst"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/InhaleSecondsSecond"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:maxLength="1"
+                android:ems="2"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/continue_after"
+            android:id="@+id/inhaleAndExhaleContinue"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
