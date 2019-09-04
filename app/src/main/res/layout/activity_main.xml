@@ -8,37 +8,48 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/homeButton"
-            android:layout_weight="1"
-            android:src="@drawable/homeicon"/>
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:layout_width="wrap_content"
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeButton"
+                android:layout_weight="1"
+                android:src="@drawable/homeicon"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chatForumButton"
+                android:layout_weight="1"
+                android:src="@drawable/chaticon"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/activitiesButton"
+                android:layout_weight="1"
+                android:src="@drawable/activityicon"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/infoButton"
+                android:layout_weight="1"
+                android:src="@drawable/infoicon"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/newFeedListView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/chatForumButton"
-            android:layout_weight="1"
-            android:src="@drawable/chaticon"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/activitiesButton"
-            android:layout_weight="1"
-            android:src="@drawable/activityicon"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/infoButton"
-            android:layout_weight="1"
-            android:src="@drawable/infoicon"/>
-
+            android:divider="@null"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.bluemind.bluemind;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +19,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.sendbird.android.SendBird;
+import com.sendbird.android.SendBirdException;
+import com.sendbird.android.User;
 
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.json.JSONException;
@@ -45,7 +49,7 @@ public class UserLogin extends AppCompatActivity {
     private Button loginIn;
     private TextView createAccount;
     private EditText userNameET, userPasswordET;
-    String userName, userPassword;
+    String userName, userPassword, nickName;
     JSONParser parser = new JSONParser();
     private static final String KEY_STATUS= "status";
     private static final String KEY_SUCCESS = "success";
@@ -63,6 +67,7 @@ public class UserLogin extends AppCompatActivity {
         userPasswordET = (EditText) findViewById(R.id.userPasswordEditText);
 
         userName = userNameET.getText().toString();
+        nickName = userPasswordET.getText().toString();
         userPassword = userPasswordET.getText().toString();
 
         loginIn = (Button) findViewById(R.id.loginButton);
@@ -97,9 +102,10 @@ public class UserLogin extends AppCompatActivity {
             try{
                 int success = jsonObject.getInt(KEY_SUCCESS);
                 if(success == 1){
-                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences preferences = getApplicationContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("userID", userName);
+                    editor.putString("NickName", userName);
                     editor.apply();
 
                     Intent intent = new Intent(getApplicationContext(), IdentifyMe.class);

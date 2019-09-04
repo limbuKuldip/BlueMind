@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".newsfeed.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,17 +31,18 @@
             android:label="Identify Me"/>
         <activity android:name=".IdentifyMeSplashScreen"
             android:label="Identify Me"/>
-        <activity android:name=".MainActivity">
-        </activity>
         <activity android:name=".CreateAccount"
             android:label="Create Account">
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".ActivityList"
             android:label="Activity">
         </activity>
         <activity android:name=".ChatForum"
             android:label="Messages"/>
+        <activity android:name=".chat.ChatActivity"
+            android:label="Chat"/>
         <activity
             android:name=".Splash"
             android:label="Blue Mind" />
@@ -60,9 +62,6 @@
             android:label="Expert Consultation"/>
         <activity android:name=".ExpertsDetails"
             android:label="Experts Details"/>
-        <activity android:name=".groupchannel.GroupChannelActivity"
-            android:label="Chat Forum"/>
-        <activity android:name=".groupchannel.CreateGroupChannelActivity"/>
         <activity android:name=".SetTimeFrame"
             android:label="Breathing Activity"/>
         <activity android:name=".BreathingActivity"
