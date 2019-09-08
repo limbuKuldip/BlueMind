@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
+import com.bluemind.bluemind.meditation.Meditation;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +56,9 @@ public class ActivityList extends AppCompatActivity {
                     Intent challengesintent = new Intent(getApplicationContext(), Splash.class);
                     challengesintent.putExtra("userID", UID);
                     startActivity(challengesintent);
+                } else if(position == 3){
+                    Intent meditationIntent = new Intent(getApplicationContext(), Meditation.class);
+                    startActivity(meditationIntent);
                 } else if (position == 5){
                     Intent expertConsultation = new Intent(getApplicationContext(), ExpertConsultation.class);
                     startActivity(expertConsultation);

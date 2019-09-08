@@ -18,31 +18,38 @@
         <activity android:name=".UserLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.VIEW"/>
+
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".IdentifyMe"
-            android:label="Identify Me">
-        </activity>
-        <activity android:name=".IdentifyMe2"
-            android:label="Identify Me"/>
-        <activity android:name=".IdentifyMe3"
-            android:label="Identify Me"/>
-        <activity android:name=".IdentifyMeSplashScreen"
-            android:label="Identify Me"/>
-        <activity android:name=".CreateAccount"
-            android:label="Create Account">
-        </activity>
-        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".IdentifyMe"
+            android:label="Identify Me"></activity>
+        <activity
+            android:name=".IdentifyMe2"
+            android:label="Identify Me" />
+        <activity
+            android:name=".IdentifyMe3"
+            android:label="Identify Me" />
+        <activity
+            android:name=".IdentifyMeSplashScreen"
+            android:label="Identify Me" />
+        <activity
+            android:name=".CreateAccount"
+            android:label="Create Account"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ActivityList"
-            android:label="Activity">
-        </activity>
-        <activity android:name=".ChatForum"
-            android:label="Messages"/>
-        <activity android:name=".chat.ChatActivity"
-            android:label="Chat"/>
+            android:label="Activity"></activity>
+        <activity
+            android:name=".ChatForum"
+            android:label="Messages" />
+        <activity
+            android:name=".chat.ChatActivity"
+            android:label="Chat" />
+        <activity android:name=".chat.GroupChannelActivity" />
         <activity
             android:name=".Splash"
             android:label="Blue Mind" />
@@ -58,15 +65,22 @@
         <activity
             android:name=".ReviewScreen"
             android:label="Blue Mind" />
-        <activity android:name=".ExpertConsultation"
-            android:label="Expert Consultation"/>
-        <activity android:name=".ExpertsDetails"
-            android:label="Experts Details"/>
-        <activity android:name=".SetTimeFrame"
-            android:label="Breathing Activity"/>
-        <activity android:name=".BreathingActivity"
-            android:label="Breathing Activity"/>
-        <activity android:name=".BreathingExercise"/>
+        <activity
+            android:name=".meditation.Meditation"
+            android:label="Meditation" />
+        <activity
+            android:name=".expert_Consultation.ExpertConsultation"
+            android:label="Expert Consultation" />
+        <activity
+            android:name=".expert_Consultation.ExpertsDetails"
+            android:label="Experts Details" />
+        <activity
+            android:name=".SetTimeFrame"
+            android:label="Breathing Activity" />
+        <activity
+            android:name=".BreathingActivity"
+            android:label="Breathing Activity" />
+        <activity android:name=".BreathingExercise" />
     </application>
 
 </manifest>

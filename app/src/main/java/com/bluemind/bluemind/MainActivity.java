@@ -2,11 +2,18 @@ package com.bluemind.bluemind;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Cache;
@@ -15,7 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.bluemind.bluemind.chat.ChatActivity;
+import com.bluemind.bluemind.chat.GroupChannelActivity;
 import com.bluemind.bluemind.newsfeed.AppController;
 import com.bluemind.bluemind.newsfeed.FeedItem;
 import com.bluemind.bluemind.newsfeed.FeedListAdapter;
@@ -31,7 +38,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageButton activityButton, chatForumButton;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -46,13 +53,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
         // Initialize the SendBird SDK.
         SendBird.init(APP_ID, this.getApplicationContext());
 
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         final String userId = preferences.getString("userID", null);
         final String nickName = preferences.getString("NickName", null);
+        final String userEmail = preferences.getString("userEmail", null);
+
+        NavigationView header = ((NavigationView)findViewById(R.id.nav_view));
+        View v = header.getHeaderView(0);
+        TextView userName = (TextView) v.findViewById(R.id.nav_userName);
+        userName.setText(userId);
+        TextView email = (TextView) v.findViewById(R.id.nav_user_email);
+        email.setText(userEmail);
 
         activityButton = (ImageButton) findViewById(R.id.activitiesButton);
         chatForumButton = (ImageButton) findViewById(R.id.chatForumButton);
@@ -181,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Update the user's nickname
                 updateCurrentUserInfo(userNickname);
-                Intent chatForumIntent = new Intent(getApplicationContext(), ChatActivity.class);
+                Intent chatForumIntent = new Intent(getApplicationContext(), GroupChannelActivity.class);
                 startActivity(chatForumIntent);
                 finish();
             }
@@ -208,5 +231,38 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_tools) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

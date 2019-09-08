@@ -15,15 +15,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.JsonObject;
+import com.sendbird.android.ConnectionManager;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.User;
 
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,14 +56,14 @@ public class UserLogin extends AppCompatActivity {
     private TextView createAccount;
     private EditText userNameET, userPasswordET;
     String userName, userPassword, nickName;
-    JSONParser parser = new JSONParser();
     private static final String KEY_STATUS= "status";
     private static final String KEY_SUCCESS = "success";
     private static final String KEY_USERNAME = "userName";
     private static final String KEY_PASSWORD = "userPassword";
     private static final String KEY_MESSAGE = "message";
+    private static final String KEY_EMPTY = "";
     private static String userID = null;
-    private static String link = "http://www.limbukuldip.com/authenticateUser.php";
+    private static String link = "http://www.limbukuldip.com/login.php";
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -66,15 +72,14 @@ public class UserLogin extends AppCompatActivity {
         userNameET = (EditText) findViewById(R.id.userNameEditText);
         userPasswordET = (EditText) findViewById(R.id.userPasswordEditText);
 
-        userName = userNameET.getText().toString();
-        nickName = userPasswordET.getText().toString();
-        userPassword = userPasswordET.getText().toString();
-
         loginIn = (Button) findViewById(R.id.loginButton);
         loginIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FetchUserDetailsAsyncTask().execute();
+                getData();
+                if(validateInputs()){
+                    login();
+                }
             }
         });
 
@@ -89,68 +94,38 @@ public class UserLogin extends AppCompatActivity {
         });
     }
 
-    private class FetchUserDetailsAsyncTask extends AsyncTask<String, String, String>{
-        @Override
-        protected void onPreExecute(){
-            userName = userNameET.getText().toString();
-        }
-        @Override
-        protected String doInBackground(String... params){
-            HttpJsonParser httpJsonParser = new HttpJsonParser();
-            JSONObject jsonObject = httpJsonParser.makeHttpRequest(link, "GET", null);
-
-            try{
-                int success = jsonObject.getInt(KEY_SUCCESS);
-                if(success == 1){
-                    SharedPreferences preferences = getApplicationContext().getSharedPreferences("UserData", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("userID", userName);
-                    editor.putString("NickName", userName);
-                    editor.apply();
-
-                    Intent intent = new Intent(getApplicationContext(), IdentifyMe.class);
-                    startActivity(intent);
-                }else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-            return null;
-        }
+    public void getData(){
+        userName = userNameET.getText().toString();
+        nickName = userPasswordET.getText().toString();
+        userPassword = userPasswordET.getText().toString();
     }
 
-    /*private void login(){
+    private void login(){
+        final JSONObject request = new JSONObject();
+        try{
+            request.put(KEY_USERNAME, userName);
+            request.put(KEY_PASSWORD, userPassword);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("userName", userName);
-        params.put("userPassword", userPassword);
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("userID", userNameET.getText().toString());
-        editor.apply();
-
-        Intent intent = new Intent(getApplicationContext(), IdentifyMe.class);
-        startActivity(intent);
-
-        CustomRequest customRequest = new CustomRequest(Request.Method.POST, link, params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, link, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-                try {
-                    if (response.getInt(KEY_STATUS) == 0) {
+                try{
+                    if(response.getInt(KEY_STATUS) == 0){
+                        response.getString("email");
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("userID", userName);
+                        editor.putString("userEmail", response.getString("email"));
+                        editor.apply();
                         Intent intent = new Intent(getApplicationContext(), IdentifyMe.class);
                         startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Login UnSuccessful", Toast.LENGTH_LONG).show();
+                    } else{
+                        Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_LONG).show();
                     }
-                } catch (JSONException e) {
+                } catch (JSONException e){
                     e.printStackTrace();
                 }
             }
@@ -161,6 +136,20 @@ public class UserLogin extends AppCompatActivity {
             }
         });
 
-        MySingleton.getInstance(this).addToRequestQueue(customRequest);
-    }*/
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private Boolean validateInputs(){
+        if(KEY_EMPTY.equals(userName)){
+            userNameET.setError("Username cannot be empty");
+        }
+        if(KEY_EMPTY.equals(userPassword)){
+            userPasswordET.setError("Password cannot be empty");
+        }
+        return true;
+    }
 }

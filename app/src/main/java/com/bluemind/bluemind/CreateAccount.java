@@ -4,10 +4,16 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -18,6 +24,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +36,17 @@ public class CreateAccount extends AppCompatActivity {
 
     private static String link = "http://www.limbukuldip.com/createAccount.php";
     private EditText firstNameEditText, lastNameEditText, userNameEditText, userPasswordEditText, emailEditext, phoneNumberEditText;
-    String userID, firstName, lastName, userName, userPassword, email, phoneNumber;
+    String firstName, lastName, userName, userPassword, email, phoneNumber;
     private Button createButton;
-    JSONParser parser = new JSONParser();
+    private static final String KEY_STATUS = "status";
+    private static final String KEY_EMPTY = "empty";
+    private static final String KEY_FIRSTNAME = "firstName";
+    private static final String KEY_LASTNAME = "lastName";
+    private static final String KEY_USERNAME = "userName";
+    private static final String KEY_PASSWORD = "userPassword";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONENUMBER = "phoneNumber";
+    private static final String KEY_MESSAGE = "message";
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -48,16 +64,14 @@ public class CreateAccount extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getData();
+                getData();
                 //InsertData(userID, firstName, lastName, userName, userPassword, email, phoneNumber);
-                Intent intent = new Intent(getApplicationContext(), UserLogin.class);
-                startActivity(intent);
+                register();
             }
         });
     }
 
     public void getData(){
-        userID = userNameEditText.getText().toString();
         firstName = firstNameEditText.getText().toString();
         lastName = lastNameEditText.getText().toString();
         userName = userNameEditText.getText().toString();
@@ -66,11 +80,52 @@ public class CreateAccount extends AppCompatActivity {
         phoneNumber = phoneNumberEditText.getText().toString();
     }
 
-    public void InsertData(final String userID, final String firstName, final String lastName, final String userName, final String userPassword, final String email, final String phoneNumber){
+    private void register(){
+        final JSONObject request = new JSONObject();
+        try{
+            request.put(KEY_FIRSTNAME, firstName);
+            request.put(KEY_LASTNAME, lastName);
+            request.put(KEY_USERNAME, userName);
+            request.put(KEY_PASSWORD, userPassword);
+            request.put(KEY_EMAIL, email);
+            request.put(KEY_PHONENUMBER, phoneNumber);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, link, request, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.getInt(KEY_STATUS) == 0) {
+                        Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+                        startActivity(intent);
+                    } else if (response.getInt(KEY_STATUS) == 1) {
+                        userNameEditText.setError("UserName already taken");
+                        userNameEditText.requestFocus();
+                    } else if(response.getInt(KEY_STATUS)== 3){
+                        Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void InsertData(final String firstName, final String lastName, final String userName, final String userPassword, final String email, final String phoneNumber){
         class writeData extends AsyncTask<String, Void, String>{
             @Override
             protected String doInBackground(String... params){
-                String uID = userID;
                 String fName = firstName;
                 String lName = lastName;
                 String uName = userName;
@@ -79,7 +134,6 @@ public class CreateAccount extends AppCompatActivity {
                 String pNumber = phoneNumber;
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("userID", uID));
                 nameValuePairs.add(new BasicNameValuePair("firstName", fName));
                 nameValuePairs.add(new BasicNameValuePair("lastName", lName));
                 nameValuePairs.add(new BasicNameValuePair("userName", uName));
@@ -116,6 +170,6 @@ public class CreateAccount extends AppCompatActivity {
             }
         }
         writeData writeData = new writeData();
-        writeData.execute(userID, firstName, lastName, userName, userPassword, email, phoneNumber);
+        writeData.execute(firstName, lastName, userName, userPassword, email, phoneNumber);
     }
 }
