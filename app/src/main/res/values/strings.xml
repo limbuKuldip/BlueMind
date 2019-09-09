@@ -99,4 +99,19 @@
     <string name="breathing_content2">Pranayama or breathing exercise is essential for healthy \n mind. It helps you relax and makes you calm.</string>
     <string name="breathing_content3">Select Time. Press Start. Practise</string>
     <string name="breathing_content4">Please Plan your Inhale &amp; Exhale \n timeframe.</string>
+
+    <!-- Depression Workshop -->
+    <string name="depressionworkshop">Depression Workshop</string>
+    <string name="depression_workshop_content1">Get more insight into your issues &amp; read what other\'s \nthink depression &amp; anxiety is.</string>
+    <string name="depression_workshop_content2">Beyond Blue, Health Direct, Blue Mind Blog</string>
+    <string name="browse">Browse</string>
+    <string name="newsFeed">News Feed</string>
+    <string name="help">Help</string>
+    <string name="beyondBlue">Beyond Blue</string>
+    <string name="beyongBlue_content">If you want to get more information please contact \nBeyond Blue.</string>
+    <string name="call">Call</string>
+    <string name="healthDirect">Health Direct</string>
+    <string name="symptomChecker">Symptom Checker</string>
+    <string name="blueMindBlog">Blue Mind Blog</string>
+    <string name="willBeAvailableSoon">Will be Available Soon</string>
 </resources>

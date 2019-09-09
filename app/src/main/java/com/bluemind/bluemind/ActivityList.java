@@ -10,6 +10,7 @@ import android.widget.SimpleAdapter;
 
 import com.bluemind.bluemind.breathing.BreathingActivity;
 import com.bluemind.bluemind.breathing.SetTimeFrame;
+import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
 import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 import com.bluemind.bluemind.meditation.Meditation;
 
@@ -58,6 +59,9 @@ public class ActivityList extends AppCompatActivity {
                     Intent challengesintent = new Intent(getApplicationContext(), Splash.class);
                     challengesintent.putExtra("userID", UID);
                     startActivity(challengesintent);
+                } else if(position == 2){
+                    Intent depressionIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
+                    startActivity(depressionIntent);
                 } else if(position == 3){
                     Intent meditationIntent = new Intent(getApplicationContext(), Meditation.class);
                     startActivity(meditationIntent);

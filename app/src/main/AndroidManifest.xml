@@ -68,6 +68,16 @@
         <activity
             android:name=".meditation.Meditation"
             android:label="Meditation" />
+        <activity android:name=".depression_workshop.DepressionWorkshop"
+            android:label="Depression Workshop"/>
+        <activity android:name=".depression_workshop.DepressionWorkshopList"
+            android:label="Depression Workshop"/>
+        <activity android:name=".depression_workshop.BeyondBlue"
+            android:label="Depression Workshop"/>
+        <activity android:name=".depression_workshop.HealthDirect"
+            android:label="Depression Workshop"/>
+        <activity android:name=".depression_workshop.BlueMindBlog"
+            android:label="Depression Workshop"/>
         <activity
             android:name=".expert_Consultation.ExpertConsultation"
             android:label="Expert Consultation" />

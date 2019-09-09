@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.bluemind.bluemind.MainActivity;
 import com.bluemind.bluemind.R;
@@ -18,10 +17,14 @@ public class BreathingExercise extends AppCompatActivity {
     CountDownTimer timer, timer2;
     private boolean timerIsRunning = false;
     private boolean timer2IsRunning = false;
+
     @Override
-    protected void  onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breathing_exercise);
+
+        inhaleET = (EditText) findViewById(R.id.inhaleSeconds_breathingExercise);
+        exhaleET = (EditText) findViewById(R.id.exhaleSeconds_breathingExercise);
 
         Bundle values = getIntent().getExtras();
         final int inhaleSeconds = values.getInt("inhaleSeconds");
@@ -29,7 +32,7 @@ public class BreathingExercise extends AppCompatActivity {
         timer = new CountDownTimer(totalInhaleSeconds, 100) {
             @Override
             public void onTick(long millisUntilFinished) {
-                inhaleET.setText(Long.toString(millisUntilFinished/1000));
+                inhaleET.setText(Long.toString(millisUntilFinished / 1000));
                 timerIsRunning = true;
             }
 
@@ -46,7 +49,7 @@ public class BreathingExercise extends AppCompatActivity {
         timer2 = new CountDownTimer(totalExhaleSeconds, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                exhaleET.setText(Long.toString(millisUntilFinished/1000));
+                exhaleET.setText(Long.toString(millisUntilFinished / 1000));
                 timer2IsRunning = true;
             }
 
@@ -74,9 +77,9 @@ public class BreathingExercise extends AppCompatActivity {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(timerIsRunning == true){
+                if (timerIsRunning == true) {
                     timer.cancel();
-                } else if(timer2IsRunning == true){
+                } else if (timer2IsRunning == true) {
                     timer2.cancel();
                 }
             }
@@ -91,4 +94,5 @@ public class BreathingExercise extends AppCompatActivity {
             }
         });
     }
+
 }

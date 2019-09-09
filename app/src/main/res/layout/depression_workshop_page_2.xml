@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/breathing_background"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/beyondBlueButton"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/rounded_button" />
+
+        <ImageButton
+            android:id="@+id/healthDirectButton"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/rounded_button" />
+
+        <ImageButton
+            android:id="@+id/blueMindBlogButton"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/rounded_button" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/depression_workshop_page_2_newsFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/newsFeed"
+            android:background="@drawable/rounded_button"/>
+
+        <Button
+            android:id="@+id/depression_workshop_page_2_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/help"
+            android:background="@drawable/rounded_button"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
