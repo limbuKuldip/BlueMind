@@ -114,4 +114,14 @@
     <string name="symptomChecker">Symptom Checker</string>
     <string name="blueMindBlog">Blue Mind Blog</string>
     <string name="willBeAvailableSoon">Will be Available Soon</string>
+
+    <!-- Meditation -->
+    <string name="meditation_name">Meditation Center</string>
+    <string name="meditation_center_content">Sit calm and meditate. You will realize just only this \nsimple practise will make extraordinary changes.</string>
+    <string name="meditation_content_2">Post. Calm Audios. Guided Meditation</string>
+    <string name="verifiedPost">Verified Posts</string>
+    <string name="meditate">Meditate</string>
+    <string name="player">Player</string>
+    <string name="guidedMeditation">Guided Meditation</string>
+    <string name="meditation_last_content">See under professionals profile for therapy options</string>
 </resources>

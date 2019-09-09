@@ -68,6 +68,12 @@
         <activity
             android:name=".meditation.Meditation"
             android:label="Meditation" />
+        <activity android:name=".meditation.MeditationPosts"
+            android:label="Meditation"/>
+        <activity android:name=".meditation.MeditationMediaPlayer"
+            android:label="Meditation"/>
+        <activity android:name=".meditation.MeditationLastPage"
+            android:label="Meditation"/>
         <activity android:name=".depression_workshop.DepressionWorkshop"
             android:label="Depression Workshop"/>
         <activity android:name=".depression_workshop.DepressionWorkshopList"

@@ -8,25 +8,26 @@ import android.widget.Button;
 
 import com.bluemind.bluemind.MainActivity;
 import com.bluemind.bluemind.R;
+import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 
-public class Meditation extends AppCompatActivity {
-    private Button browse, newsFeed;
+public class MeditationLastPage extends AppCompatActivity {
+    private Button newsfeed, profesionalHelp;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.meditation);
+        setContentView(R.layout.meditation_last_page);
 
-        browse = (Button) findViewById(R.id.meditationBrowse);
-        browse.setOnClickListener(new View.OnClickListener() {
+        profesionalHelp = (Button) findViewById(R.id.meditation_last_professional_help);
+        profesionalHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browse = new Intent(getApplicationContext(), MeditationPosts.class);
-                startActivity(browse);
+                Intent intent = new Intent(getApplicationContext(), ExpertConsultation.class);
+                startActivity(intent);
             }
         });
 
-        newsFeed = (Button) findViewById(R.id.meditation_newsFeed);
-        newsFeed.setOnClickListener(new View.OnClickListener() {
+        newsfeed = (Button) findViewById(R.id.meditation_Last_newsFeed);
+        newsfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent newsFeedIntent = new Intent(getApplicationContext(), MainActivity.class);
