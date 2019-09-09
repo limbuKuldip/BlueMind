@@ -48,10 +48,7 @@ public class BeyondBlue extends AppCompatActivity {
         browse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.beyondblue.org.au/";
-
-                Intent urlIntent = new Intent(Intent.ACTION_VIEW);
-                urlIntent.setData(Uri.parse(url));
+                Intent urlIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
                 startActivity(urlIntent);
             }
         });

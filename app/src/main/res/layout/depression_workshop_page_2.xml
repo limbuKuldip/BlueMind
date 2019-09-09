@@ -18,7 +18,9 @@
             android:layout_height="110dp"
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
-            android:background="@drawable/rounded_button" />
+            android:background="@drawable/rounded_button"
+            android:src="@drawable/beyond_blue"
+            android:scaleType="center"/>
 
         <ImageButton
             android:id="@+id/healthDirectButton"
@@ -27,7 +29,9 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="22dp"
-            android:background="@drawable/rounded_button" />
+            android:background="@drawable/rounded_button"
+            android:scaleType="centerCrop"
+            android:src="@drawable/healthdirect_logo" />
 
         <ImageButton
             android:id="@+id/blueMindBlogButton"
@@ -36,7 +40,9 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="22dp"
-            android:background="@drawable/rounded_button" />
+            android:background="@drawable/rounded_button"
+            android:scaleType="center"
+            android:src="@drawable/bluemind_depression" />
     </LinearLayout>
 
     <RelativeLayout

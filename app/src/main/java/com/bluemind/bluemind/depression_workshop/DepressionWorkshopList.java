@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import com.bluemind.bluemind.MainActivity;
 import com.bluemind.bluemind.R;
+import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 
 public class DepressionWorkshopList extends AppCompatActivity {
     private ImageButton beyondBlueButton, healthDirectButton, bluemindBlog;
@@ -58,7 +59,8 @@ public class DepressionWorkshopList extends AppCompatActivity {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent professionalHelp = new Intent(getApplicationContext(), ExpertConsultation.class);
+                startActivity(professionalHelp);
             }
         });
     }

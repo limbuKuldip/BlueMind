@@ -48,10 +48,7 @@ public class HealthDirect extends AppCompatActivity {
         browse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.healthdirect.gov.au/";
-
-                Intent browseIntent = new Intent(Intent.ACTION_VIEW);
-                browseIntent.setData(Uri.parse(url));
+                Intent browseIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
                 startActivity(browseIntent);
             }
         });
