@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.bluemind.bluemind.breathing.BreathingActivity;
+import com.bluemind.bluemind.breathing.SetTimeFrame;
 import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 import com.bluemind.bluemind.meditation.Meditation;
 
@@ -50,7 +52,7 @@ public class ActivityList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    Intent breathingIntent = new Intent(getApplicationContext(), SetTimeFrame.class);
+                    Intent breathingIntent = new Intent(getApplicationContext(), BreathingActivity.class);
                     startActivity(breathingIntent);
                 } else if(position == 1){
                     Intent challengesintent = new Intent(getApplicationContext(), Splash.class);

@@ -95,4 +95,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="breathing_content2">Pranayama or breathing exercise is essential for healthy \n mind. It helps you relax and makes you calm.</string>
+    <string name="breathing_content3">Select Time. Press Start. Practise</string>
+    <string name="breathing_content4">Please Plan your Inhale &amp; Exhale \n timeframe.</string>
 </resources>

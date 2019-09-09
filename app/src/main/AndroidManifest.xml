@@ -75,12 +75,12 @@
             android:name=".expert_Consultation.ExpertsDetails"
             android:label="Experts Details" />
         <activity
-            android:name=".SetTimeFrame"
+            android:name=".breathing.SetTimeFrame"
             android:label="Breathing Activity" />
         <activity
-            android:name=".BreathingActivity"
+            android:name=".breathing.BreathingActivity"
             android:label="Breathing Activity" />
-        <activity android:name=".BreathingExercise" />
+        <activity android:name=".breathing.BreathingExercise" />
     </application>
 
 </manifest>

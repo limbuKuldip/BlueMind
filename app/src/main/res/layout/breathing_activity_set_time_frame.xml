@@ -1,150 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_vertical|center_horizontal">
+        android:background="@color/breathing_background">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/time_frame"
-            android:text="@string/setTimeFrame"
-            android:textStyle="bold"/>
+            android:text="@string/breathing_content4"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="80dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/exercise_time_frame"
-            android:text="@string/exerciseTimeFrame"
-            android:textStyle="bold"/>
+            android:text="My Inhale Time"
+            android:layout_marginTop="230dp"
+            android:textSize="24sp"
+            android:layout_marginStart="35dp"/>
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/inhaleSeconds"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:inputType="number"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border_breathing_timeframe"
+            android:ems="8"
+            android:layout_marginTop="280dp"
+            android:layout_marginStart="35dp"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/minutesFirst"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Exhale Time"
+            android:layout_marginTop="325dp"
+            android:textSize="24sp"
+            android:layout_marginStart="35dp" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/minutesSecond"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/semicolon"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/secondsFirst"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/secondsSecond"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-        </LinearLayout>
+        <EditText
+            android:id="@+id/exhaleSeconds"
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border_breathing_timeframe"
+            android:ems="8"
+            android:layout_marginTop="380dp"
+            android:layout_marginStart="35dp"/>
 
         <Button
+            android:id="@+id/breathing_SetTime_Start_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/setTime"
-            android:id="@+id/breathing_activity_continue"/>
+            android:text="@string/start"
+            android:layout_marginTop="430dp"
+            android:background="@drawable/bg_parent_rounded_corner"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/inhaleAndExhale"
-            android:id="@+id/inhaleExhale"
-            android:textStyle="bold"/>
+    </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/InhaleMinutesFirst"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/InhaleMinutesSecond"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/semicolon"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/InhaleSecondsFirst"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/InhaleSecondsSecond"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:maxLength="1"
-                android:ems="2"/>
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp">
 
         <Button
+            android:id="@+id/set_timeFrame_news_feed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/continue_after"
-            android:id="@+id/inhaleAndExhaleContinue"/>
-    </LinearLayout>
+            android:text="News Feed" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
