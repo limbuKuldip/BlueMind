@@ -30,8 +30,6 @@ public class ActivityList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivitypage);
 
-        final String UID = getIntent().getStringExtra("userID");
-
         List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
         for(int i = 0; i < 6; i++){
@@ -57,7 +55,6 @@ public class ActivityList extends AppCompatActivity {
                     startActivity(breathingIntent);
                 } else if(position == 1){
                     Intent challengesintent = new Intent(getApplicationContext(), Splash.class);
-                    challengesintent.putExtra("userID", UID);
                     startActivity(challengesintent);
                 } else if(position == 2){
                     Intent depressionIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
