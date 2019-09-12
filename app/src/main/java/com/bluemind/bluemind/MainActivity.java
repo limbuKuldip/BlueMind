@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bluemind.bluemind.chat.GroupChannelActivity;
+import com.bluemind.bluemind.chat.PreferenceUtils;
 import com.bluemind.bluemind.newsfeed.AppController;
 import com.bluemind.bluemind.newsfeed.FeedItem;
 import com.bluemind.bluemind.newsfeed.FeedListAdapter;
@@ -62,12 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         // Initialize the SendBird SDK.
+        PreferenceUtils.init(getApplicationContext());
         SendBird.init(APP_ID, this.getApplicationContext());
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        final String userId = preferences.getString("userID", null);
-        final String nickName = preferences.getString("NickName", null);
+        final String userId = preferences.getString("userId", null);
+        final String nickName = preferences.getString("nickName", null);
         final String userEmail = preferences.getString("userEmail", null);
 
         NavigationView header = ((NavigationView)findViewById(R.id.nav_view));
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         chatForumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferenceUtils.setUserId(userId);
+                PreferenceUtils.setNickname(nickName);
                 connectToSendBird(userId, nickName);
             }
         });

@@ -17,6 +17,7 @@ public class IdentifyMeSplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         }, secondsDelayed * 1000);
     }

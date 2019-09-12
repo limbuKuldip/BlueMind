@@ -50,6 +50,7 @@
             android:name=".chat.ChatActivity"
             android:label="Chat" />
         <activity android:name=".chat.GroupChannelActivity" />
+        <activity android:name=".chat.CreateGroupChannelActivity"/>
         <activity
             android:name=".Splash"
             android:label="Blue Mind" />

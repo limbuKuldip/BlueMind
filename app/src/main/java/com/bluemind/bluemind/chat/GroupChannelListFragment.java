@@ -76,8 +76,8 @@ public class GroupChannelListFragment extends Fragment {
         mCreateChannelFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
-                //startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
+                Intent intent = new Intent(getContext(), CreateGroupChannelActivity.class);
+                startActivityForResult(intent, INTENT_REQUEST_NEW_GROUP_CHANNEL);
             }
         });
 
@@ -248,6 +248,11 @@ public class GroupChannelListFragment extends Fragment {
      * @param channelUrl The URL of the channel to enter.
      */
     void enterGroupChannel(String channelUrl) {
+        GroupChatFragment fragment = GroupChatFragment.newInstance(channelUrl);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container_group_channel, fragment)
+                .addToBackStack(null)
+                .commit();
 
     }
 
@@ -264,6 +269,7 @@ public class GroupChannelListFragment extends Fragment {
     private void refreshChannelList(int numChannels) {
         mChannelListQuery = GroupChannel.createMyGroupChannelListQuery();
         mChannelListQuery.setLimit(numChannels);
+        mChannelListQuery.setIncludeEmpty(true);
 
         mChannelListQuery.next(new GroupChannelListQuery.GroupChannelListQueryResultHandler() {
             @Override

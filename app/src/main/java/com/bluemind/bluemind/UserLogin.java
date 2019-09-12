@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.bluemind.bluemind.chat.PreferenceUtils;
 import com.google.gson.JsonObject;
 import com.sendbird.android.ConnectionManager;
 import com.sendbird.android.SendBird;
@@ -96,7 +97,7 @@ public class UserLogin extends AppCompatActivity {
 
     public void getData(){
         userName = userNameET.getText().toString();
-        nickName = userPasswordET.getText().toString();
+        nickName = userNameET.getText().toString();
         userPassword = userPasswordET.getText().toString();
     }
 
@@ -117,9 +118,16 @@ public class UserLogin extends AppCompatActivity {
                         response.getString("email");
                         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("userID", userName);
+                        editor.putString("userId", userName);
+                        editor.putString("nickName", userName);
                         editor.putString("userEmail", response.getString("email"));
                         editor.apply();
+
+                        SharedPreferences.Editor editor1 = getSharedPreferences("sendbird", MODE_PRIVATE).edit();
+                        editor1.putString("userId", userName);
+                        editor1.putString("nickName", userName);
+                        editor1.apply();
+
                         Intent intent = new Intent(getApplicationContext(), IdentifyMe.class);
                         startActivity(intent);
                     } else{
