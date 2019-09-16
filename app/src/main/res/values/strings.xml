@@ -24,15 +24,25 @@
     <string name="upload">Upload</string>
     <string name="exit">Exit</string>
     <string name="review">Your activity is submitted for reviewing.</string>
+
+    <!-- Log In -->
+    <string name="forgotPassword">Forgot Password\?</string>
     <string name="login">Log in</string>
+    <string name="createAccount">Create a Blue Mind account</string>
+
+    <!-- Create Account -->
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="passwordReTry">Confirm Password</string>
+    <string name="confirmMessage">Password does not match</string>
     <string name="register">Create an account</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="phoneNumber">Phone Number</string>
     <string name="email">Email</string>
     <string name="create">Create</string>
+
+    <!-- Identify Me -->
     <string name="identifyme">Identify Me</string>
     <string name="purpose">Purpose of using Blue Mind Application</string>
     <string name="next">Next</string>
@@ -47,7 +57,12 @@
     <string name="disorderName">Disorder Name</string>
     <string name="thankyouMessage">Thank you for cooperating.\nYou will be redirected to your Home page shortly.</string>
     <string name="doneButton">Done</string>
+
     <string name="writeamessage">Write a Message</string>
+    <string name="book">Make an Appointment</string>
+    <string name="selectDate">Select the date for appointment</string>
+    <string name="selectTime">Select time for the appointment</string>
+    <string name="confirm">Confirm</string>
     <string name="chat">Chat</string>
     <string name="Andrew">Andrew Johnson</string>
     <string name="therapist">Therapist</string>
@@ -124,4 +139,13 @@
     <string name="player">Player</string>
     <string name="guidedMeditation">Guided Meditation</string>
     <string name="meditation_last_content">See under professionals profile for therapy options</string>
+
+    <!-- News Feed -->
+    <string name="createPost">Create A Post</string>
+    <string name="postHint">What do you have to say!</string>
+    <string name="attachPV">Click to \nattach Picture or \n Video</string>
+    <string name="post">Post</string>
+    <string name="like">Like</string>
+    <string name="comment">Comment</string>
+    <string name="share">Share</string>
 </resources>

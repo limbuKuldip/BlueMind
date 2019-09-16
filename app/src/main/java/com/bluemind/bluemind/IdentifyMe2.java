@@ -36,6 +36,7 @@ public class IdentifyMe2 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RecordClinicallyDiagonised();
                 Intent identifyMe3 = new Intent(getApplicationContext(), IdentifyMe3.class);
                 startActivity(identifyMe3);
             }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -66,6 +67,9 @@ public class FeedListAdapter extends BaseAdapter {
                 .findViewById(R.id.profilePic);
         FeedImageView feedImageView = (FeedImageView) convertView
                 .findViewById(R.id.feedImage1);
+        Button likeButton = (Button) convertView.findViewById(R.id.likeButton);
+        Button commentButton = (Button) convertView.findViewById(R.id.commentButton);
+        Button shareButton = (Button) convertView.findViewById(R.id.shareButton);
 
         FeedItem item = feedItems.get(position);
 

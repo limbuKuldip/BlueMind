@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/feed_bg"
@@ -11,15 +11,15 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
 
             android:layout_marginLeft="@dimen/feed_item_margin"
             android:layout_marginRight="@dimen/feed_item_margin"
             android:layout_marginTop="@dimen/feed_item_margin"
             android:background="@drawable/bg_parent_rounded_corner"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/feed_item_padding_top_bottom"
-            android:paddingTop="@dimen/feed_item_padding_top_bottom" >
+            android:paddingTop="@dimen/feed_item_padding_top_bottom"
+            android:paddingBottom="1dp">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -32,7 +32,8 @@
                     android:id="@+id/profilePic"
                     android:layout_width="@dimen/feed_item_profile_pic"
                     android:layout_height="@dimen/feed_item_profile_pic"
-                    android:scaleType="fitCenter" >
+                    android:scaleType="fitCenter">
+
                 </com.android.volley.toolbox.NetworkImageView>
 
                 <LinearLayout
@@ -83,8 +84,55 @@
                 android:background="@color/white"
                 android:scaleType="fitXY"
                 android:visibility="visible" />
-        </LinearLayout>
 
+            <View
+                android:layout_marginTop="8dp"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#c0c0c0"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+                android:paddingRight="@dimen/feed_item_status_pad_left_right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/likeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/like"
+                    android:background="@color/white"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="#c0c0c0" />
+
+                <Button
+                    android:id="@+id/commentButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/comment"
+                    android:background="@color/white"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="#c0c0c0" />
+
+                <Button
+                    android:id="@+id/shareButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/share"
+                    android:background="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

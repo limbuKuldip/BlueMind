@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal|center_vertical">
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@color/breathing_background">
 
         <ImageView
             android:layout_width="100dp"
@@ -28,12 +29,26 @@
             android:id="@+id/experts_details_title"
             android:text=""/>
 
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:id="@+id/experts_details_chat_button"
-            android:text="@string/chat"/>
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/experts_details_chat_button"
+                android:background="@drawable/rounded_button"
+                android:text="@string/chat"/>
+
+            <Button
+                android:id="@+id/expert_booking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="@string/book"/>
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -5,15 +5,33 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class IdentifyMe3 extends AppCompatActivity {
 
     private Button back, next;
-    private String intenseDepression;
+    private String userName, purpose, clinicallyDiagonised, intenseDepression;
     private CheckBox yes, no, notSure;
+    private static final String USER_ID = "userName";
+    private static final String PURPOSE = "purpose";
+    private static final String CLINICALLY_DIAGONISED = "clinicallyDiagonised";
+    private static final String INTENSE_DEPRESSION = "intenseDepression";
+    private static final String KEY_STATUS = "status";
+    private static final String KEY_MESSAGE = "message";
+    private static final String link = "http://www.limbukuldip.com/identifyMe.php";
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,13 +55,20 @@ public class IdentifyMe3 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent splashIdentifyMe = new Intent(getApplicationContext(), IdentifyMeSplashScreen.class);
-                startActivity(splashIdentifyMe);
+                getUserID();
+                RecordData();
             }
         });
     }
 
-    public void RecordIntenseDepression(){
+    private void getUserID(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userName = preferences.getString("userId", null);
+        purpose = preferences.getString("purpose", null);
+        clinicallyDiagonised = preferences.getString("clinicallyDiagonised", null);
+    }
+
+    public void RecordData(){
         if(yes.isChecked()){
             intenseDepression = yes.getText().toString();
         }else if(no.isChecked()){
@@ -52,9 +77,41 @@ public class IdentifyMe3 extends AppCompatActivity {
             intenseDepression = notSure.getText().toString();
         }
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("IntenseDepression", intenseDepression);
-        editor.apply();
+        final JSONObject request = new JSONObject();
+        try{
+            request.put(USER_ID, userName);
+            request.put(PURPOSE, purpose);
+            request.put(CLINICALLY_DIAGONISED, clinicallyDiagonised);
+            request.put(INTENSE_DEPRESSION, intenseDepression);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, link, request, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.getInt(KEY_STATUS) == 0) {
+                        Intent intent = new Intent(getApplicationContext(), IdentifyMeSplashScreen.class);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

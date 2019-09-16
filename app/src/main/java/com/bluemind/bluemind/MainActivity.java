@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bluemind.bluemind.chat.GroupChannelActivity;
 import com.bluemind.bluemind.chat.PreferenceUtils;
 import com.bluemind.bluemind.newsfeed.AppController;
+import com.bluemind.bluemind.newsfeed.CreatePost;
 import com.bluemind.bluemind.newsfeed.FeedItem;
 import com.bluemind.bluemind.newsfeed.FeedListAdapter;
 import com.sendbird.android.SendBird;
@@ -41,22 +43,24 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageButton activityButton, chatForumButton;
+    private ImageButton activityButton, chatForumButton, postButton;
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter feedListAdapter;
     private List<FeedItem> feedItemList;
     private String feedURL = "https://api.androidhive.info/feed/feed.json";
     private static final String APP_ID = "90A0A694-F349-4249-BE71-875F6A2EE5F5";
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -81,6 +85,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         activityButton = (ImageButton) findViewById(R.id.activitiesButton);
         chatForumButton = (ImageButton) findViewById(R.id.chatForumButton);
+        postButton = (ImageButton) findViewById(R.id.postButton);
+
+        postButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createPost = new Intent(getApplicationContext(), CreatePost.class);
+                startActivity(createPost);
+                overridePendingTransition(R.anim.slide_up, R.anim.stay);
+            }
+        });
 
         activityButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,6 +249,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

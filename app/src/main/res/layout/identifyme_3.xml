@@ -88,7 +88,7 @@
                         android:id="@+id/nextIdentifyMe3"
                         android:layout_marginEnd="15dp"
                         android:layout_alignParentEnd="true"
-                        android:text="@string/next"
+                        android:text="@string/doneButton"
                         android:background="@drawable/rounded_rectangle_blue" />
                 </RelativeLayout>
             </LinearLayout>

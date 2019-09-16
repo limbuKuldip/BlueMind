@@ -1,13 +1,17 @@
 package com.bluemind.bluemind;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,15 +39,17 @@ import java.util.jar.Attributes;
 public class CreateAccount extends AppCompatActivity {
 
     private static String link = "http://www.limbukuldip.com/createAccount.php";
-    private EditText firstNameEditText, lastNameEditText, userNameEditText, userPasswordEditText, emailEditext, phoneNumberEditText;
-    String firstName, lastName, userName, userPassword, email, phoneNumber;
+    private EditText firstNameEditText, lastNameEditText, userNameEditText, userPasswordEditText, userConfirmPasswordET, emailEditext, phoneNumberEditText;
+    String firstName, lastName, userName, userPassword, userConfirmPassword, email, phoneNumber;
     private Button createButton;
+    private TextView confirmMessage;
     private static final String KEY_STATUS = "status";
-    private static final String KEY_EMPTY = "empty";
+    private static final String KEY_EMPTY = "";
     private static final String KEY_FIRSTNAME = "firstName";
     private static final String KEY_LASTNAME = "lastName";
     private static final String KEY_USERNAME = "userName";
     private static final String KEY_PASSWORD = "userPassword";
+    private static final String KEY_CONFIRMPASSWORD = "confirmPassword";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONENUMBER = "phoneNumber";
     private static final String KEY_MESSAGE = "message";
@@ -57,6 +63,9 @@ public class CreateAccount extends AppCompatActivity {
         lastNameEditText = (EditText) findViewById(R.id.lastName);
         userNameEditText = (EditText) findViewById(R.id.userName);
         userPasswordEditText = (EditText) findViewById(R.id.userPassword);
+        userConfirmPasswordET = (EditText) findViewById(R.id.confirmPassword);
+        confirmMessage = (TextView) findViewById(R.id.passwordConfirmMessage);
+        confirmMessage.setVisibility(View.GONE);
         emailEditext = (EditText) findViewById(R.id.email);
         phoneNumberEditText = (EditText) findViewById(R.id.phoneNumber);
 
@@ -65,8 +74,10 @@ public class CreateAccount extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getData();
+                if(validateInputs()){
+                    register();
+                }
                 //InsertData(userID, firstName, lastName, userName, userPassword, email, phoneNumber);
-                register();
             }
         });
     }
@@ -76,8 +87,45 @@ public class CreateAccount extends AppCompatActivity {
         lastName = lastNameEditText.getText().toString();
         userName = userNameEditText.getText().toString();
         userPassword = userPasswordEditText.getText().toString();
+        userConfirmPassword = userConfirmPasswordET.getText().toString();
         email = emailEditext.getText().toString();
         phoneNumber = phoneNumberEditText.getText().toString();
+    }
+
+    private Boolean validateInputs(){
+        if(KEY_EMPTY.equals(firstName)){
+            firstNameEditText.setError("First name cannot be empty");
+            return false;
+        }
+        if(KEY_EMPTY.equals(lastName)){
+            lastNameEditText.setError("Last name cannot be empty");
+            return false;
+        }
+        if(KEY_EMPTY.equals(userName)) {
+            userNameEditText.setError("Username cannot be empty");
+            return false;
+        }
+        if(KEY_EMPTY.equals(userPassword)){
+            userPasswordEditText.setError("User Password cannot be empty ");
+            return false;
+        }
+        if(KEY_EMPTY.equals(userConfirmPassword)){
+            userConfirmPasswordET.setError("Please confirm password");
+            return false;
+        }
+        if(KEY_EMPTY.equals(email)){
+            emailEditext.setError("Email cannot be empty");
+            return false;
+        }
+        if(KEY_EMPTY.equals(phoneNumber)){
+            phoneNumberEditText.setError("Phone number cannot be empty");
+            return false;
+        }
+        if(!userPassword.equals(userConfirmPassword)){
+            confirmMessage.setVisibility(View.VISIBLE);
+            return false;
+        }
+        return true;
     }
 
     private void register(){

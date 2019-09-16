@@ -13,6 +13,7 @@ import com.bluemind.bluemind.breathing.SetTimeFrame;
 import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
 import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 import com.bluemind.bluemind.meditation.Meditation;
+import com.bluemind.bluemind.online_yoga.OnlineYogaMain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,6 +63,9 @@ public class ActivityList extends AppCompatActivity {
                 } else if(position == 3){
                     Intent meditationIntent = new Intent(getApplicationContext(), Meditation.class);
                     startActivity(meditationIntent);
+                } else if(position == 4){
+                    Intent onlineYoga = new Intent(getApplicationContext(), OnlineYogaMain.class);
+                    startActivity(onlineYoga);
                 } else if (position == 5){
                     Intent expertConsultation = new Intent(getApplicationContext(), ExpertConsultation.class);
                     startActivity(expertConsultation);

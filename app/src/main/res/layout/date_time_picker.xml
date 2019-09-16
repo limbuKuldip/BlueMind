@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/breathing_background">
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selectDate"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false">
+
+        </DatePicker>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selectTime"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner">
+
+        </TimePicker>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/appointmentNextButton"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/next"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

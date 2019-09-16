@@ -5,12 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bluemind.bluemind.R;
 
 public class ExpertsDetails extends AppCompatActivity {
+    private Button makeAnAppointment;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -28,5 +31,14 @@ public class ExpertsDetails extends AppCompatActivity {
 
         expertise.setText(values.getString("ExpertExpertise"));
         profilePic.setImageBitmap(bitmap);
+
+        makeAnAppointment = (Button) findViewById(R.id.expert_booking);
+        makeAnAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SetAppointmentDT.class);
+                startActivity(intent);
+            }
+        });
     }
 }

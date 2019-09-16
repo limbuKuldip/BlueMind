@@ -46,7 +46,7 @@ public class IdentifyMe extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //RecordPurpose();
+                RecordPurpose();
                 Intent intent = new Intent(getApplicationContext(), IdentifyMe2.class);
                 startActivity(intent);
             }
@@ -54,7 +54,7 @@ public class IdentifyMe extends AppCompatActivity {
 
     }
 
-    public void RecordPurose(){
+    public void RecordPurpose(){
         if(relax.isChecked()){
             purpose = relax.getText().toString();
         }else if(overcome.isChecked()){
