@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/breathing_background">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/challengesButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/challenges"
+                android:background="@drawable/rounded_image_button"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/expert_help_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/expert_help"
+                android:background="@drawable/rounded_image_button"/>
+
+            <ImageButton
+                android:id="@+id/depressionWorkshopButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/depression"
+                android:layout_marginStart="150dp"
+                android:background="@drawable/rounded_image_button"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/onlineYogaButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/yoga"
+                android:background="@drawable/rounded_image_button"/>
+
+            <ImageButton
+                android:id="@+id/meditationCenterButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/meditation"
+                android:layout_marginStart="150dp"
+                android:background="@drawable/rounded_image_button"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/breathingExercise_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/breathing_icon"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_image_button"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -23,6 +23,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bluemind.bluemind.chat.PreferenceUtils;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.gson.JsonObject;
 import com.sendbird.android.ConnectionManager;
 import com.sendbird.android.SendBird;
@@ -53,8 +54,7 @@ import java.util.Map;
 
 public class UserLogin extends AppCompatActivity {
 
-    private Button loginIn;
-    private TextView createAccount;
+    private Button loginIn, createAccount;
     private EditText userNameET, userPasswordET;
     String userName, userPassword, nickName;
     private static final String KEY_STATUS= "status";
@@ -84,8 +84,7 @@ public class UserLogin extends AppCompatActivity {
             }
         });
 
-        createAccount = (TextView) findViewById(R.id.createAccount);
-        createAccount.setTextColor(Color.BLUE);
+        createAccount = (Button) findViewById(R.id.createAccount);
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +120,7 @@ public class UserLogin extends AppCompatActivity {
                         editor.putString("userId", userName);
                         editor.putString("nickName", userName);
                         editor.putString("userEmail", response.getString("email"));
+                        editor.putString("UserId", response.getString("userName"));
                         editor.apply();
 
                         SharedPreferences.Editor editor1 = getSharedPreferences("sendbird", MODE_PRIVATE).edit();

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bluemind.bluemind.R;
 
 public class ExpertsDetails extends AppCompatActivity {
+    private String expert_name;
     private Button makeAnAppointment;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -23,6 +24,7 @@ public class ExpertsDetails extends AppCompatActivity {
 
         TextView name = (TextView) findViewById(R.id.experts_details_name);
         name.setText(values.getString("ExpertName"));
+        expert_name = values.getString("ExpertName");
         TextView expertise = (TextView) findViewById(R.id.experts_details_title);
         ImageView profilePic = (ImageView) findViewById(R.id.experts_details_profile_picture);
 
@@ -37,6 +39,7 @@ public class ExpertsDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SetAppointmentDT.class);
+                intent.putExtra("appoint_expert", expert_name);
                 startActivity(intent);
             }
         });

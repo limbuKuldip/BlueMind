@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.bluemind.bluemind.breathing.BreathingActivity;
+import com.bluemind.bluemind.breathing.BreathingExercise;
 import com.bluemind.bluemind.breathing.SetTimeFrame;
 import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
 import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
@@ -20,56 +22,64 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ActivityList extends AppCompatActivity {
-
-    private ListView listView;
-    String[] activityListString = new String[]{"Breathing Center", "Challenges", "Depression Workshop", "Meditation Center", "Online Yoga", "Expert Consultation"};
-
-    int[] activityListImages = new int[]{R.drawable.breathable, R.drawable.challenges, R.drawable.depression, R.drawable.meditation, R.drawable.yoga, R.drawable.consulting};
-
+    private ImageButton challenges, depressionWorkshop, meditationCenter, breathingExercise, onlineYoga, expertHelp;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitivitypage);
+        setContentView(R.layout.activity_list);
 
-        List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        challenges = (ImageButton) findViewById(R.id.challengesButton);
+        depressionWorkshop = (ImageButton) findViewById(R.id.depressionWorkshopButton);
+        meditationCenter = (ImageButton) findViewById(R.id.meditationCenterButton);
+        breathingExercise = (ImageButton) findViewById(R.id.breathingExercise_button);
+        onlineYoga = (ImageButton) findViewById(R.id.onlineYogaButton);
+        expertHelp = (ImageButton) findViewById(R.id.expert_help_button);
 
-        for(int i = 0; i < 6; i++){
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("list_activityListString", activityListString[i]);
-            hm.put("list_activityListImages", Integer.toString(activityListImages[i]));
-            list.add(hm);
-        }
-
-        String[] from = {"list_activityListImages", "list_activityListString"};
-        int[] to = {R.id.activitylistImage, R.id.activitylistLabel};
-
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), list, R.layout.activitylistview, from, to);
-
-        listView = (ListView) findViewById(R.id.activitylist);
-        listView.setAdapter(simpleAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        challenges.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0){
-                    Intent breathingIntent = new Intent(getApplicationContext(), BreathingActivity.class);
-                    startActivity(breathingIntent);
-                } else if(position == 1){
-                    Intent challengesintent = new Intent(getApplicationContext(), Splash.class);
-                    startActivity(challengesintent);
-                } else if(position == 2){
-                    Intent depressionIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
-                    startActivity(depressionIntent);
-                } else if(position == 3){
-                    Intent meditationIntent = new Intent(getApplicationContext(), Meditation.class);
-                    startActivity(meditationIntent);
-                } else if(position == 4){
-                    Intent onlineYoga = new Intent(getApplicationContext(), OnlineYogaMain.class);
-                    startActivity(onlineYoga);
-                } else if (position == 5){
-                    Intent expertConsultation = new Intent(getApplicationContext(), ExpertConsultation.class);
-                    startActivity(expertConsultation);
-                }
+            public void onClick(View v) {
+                Intent challengeIntent = new Intent(getApplicationContext(), ChallengesList.class);
+                startActivity(challengeIntent);
+            }
+        });
+
+        depressionWorkshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent depressionWorkshopIntent = new Intent(getApplicationContext(), DepressionWorkshop.class);
+                startActivity(depressionWorkshopIntent);
+            }
+        });
+
+        meditationCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent meditationCenterIntent = new Intent(getApplicationContext(), Meditation.class);
+                startActivity(meditationCenterIntent);
+            }
+        });
+
+        breathingExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent breathingExerciseIntent = new Intent(getApplicationContext(), BreathingActivity.class);
+                startActivity(breathingExerciseIntent);
+            }
+        });
+
+        onlineYoga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent onlineYogaIntent = new Intent(getApplicationContext(), OnlineYogaMain.class);
+                startActivity(onlineYogaIntent);
+            }
+        });
+
+        expertHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent expertHelpIntent = new Intent(getApplicationContext(), ExpertConsultation.class);
+                startActivity(expertHelpIntent);
             }
         });
     }

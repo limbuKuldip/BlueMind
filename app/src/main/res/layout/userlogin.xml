@@ -50,15 +50,18 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
+            android:ems="13"
             android:text="@string/login"
             android:id="@+id/loginButton"
             android:background="@drawable/rounded_button"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:ems="13"
+            android:background="@drawable/rounded_button"
             android:id="@+id/createAccount"
             android:text="@string/register"
             android:clickable="true"
