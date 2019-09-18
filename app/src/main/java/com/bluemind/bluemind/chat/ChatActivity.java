@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
-    private final String mChannelUrl = "GROUP_CHANNEL_URL";
+    private final String mChannelUrl = "sendbird_open_channel_55095_37db2da7bb7291d91cca03c3aa5b7167f19153b9";
     private final static String CHANNEL_HANDLER_ID = "BlueMind";
 
     private ChatAdapter mChatAdapter;
