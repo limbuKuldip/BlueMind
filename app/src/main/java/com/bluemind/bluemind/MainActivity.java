@@ -3,6 +3,7 @@ package com.bluemind.bluemind;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,12 +24,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bluemind.bluemind.breathing.BreathingActivity;
 import com.bluemind.bluemind.chat.GroupChannelActivity;
 import com.bluemind.bluemind.chat.PreferenceUtils;
+import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
+import com.bluemind.bluemind.meditation.Meditation;
 import com.bluemind.bluemind.newsfeed.AppController;
 import com.bluemind.bluemind.newsfeed.CreatePost;
 import com.bluemind.bluemind.newsfeed.FeedItem;
 import com.bluemind.bluemind.newsfeed.FeedListAdapter;
+import com.bluemind.bluemind.online_yoga.OnlineYoga;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 import com.sendbird.android.User;
@@ -43,12 +48,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageButton activityButton, chatForumButton, postButton;
+    private ImageButton activityButton, chatForumButton, postButton, aboutButton;
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter feedListAdapter;
     private List<FeedItem> feedItemList;
-    private String feedURL = "https://api.androidhive.info/feed/feed.json";
+    private String feedURL = "http://www.limbukuldip.com/feed.json";
     private static final String APP_ID = "90A0A694-F349-4249-BE71-875F6A2EE5F5";
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.bringToFront();
         toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -76,8 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final String nickName = preferences.getString("nickName", null);
         final String userEmail = preferences.getString("userEmail", null);
 
-        NavigationView header = ((NavigationView)findViewById(R.id.nav_view));
-        View v = header.getHeaderView(0);
+        View v = navigationView.getHeaderView(0);
         TextView userName = (TextView) v.findViewById(R.id.nav_userName);
         userName.setText(userId);
         TextView email = (TextView) v.findViewById(R.id.nav_user_email);
@@ -86,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         activityButton = (ImageButton) findViewById(R.id.activitiesButton);
         chatForumButton = (ImageButton) findViewById(R.id.chatForumButton);
         postButton = (ImageButton) findViewById(R.id.postButton);
+        aboutButton = (ImageButton) findViewById(R.id.infoButton);
 
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +116,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 PreferenceUtils.setUserId(userId);
                 PreferenceUtils.setNickname(nickName);
                 connectToSendBird(userId, nickName);
+            }
+        });
+
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), About.class);
+                startActivity(intent);
             }
         });
 
@@ -276,22 +290,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = menuItem.getItemId();
+        menuItem.setChecked(true);
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (id == R.id.challengeCenter) {
+            Intent intent = new Intent(getApplicationContext(), ChallengesList.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.depressionWorkshop) {
+            Intent intent = new Intent(getApplicationContext(), DepressionWorkshop.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.onlineYoga) {
+            Intent intent = new Intent(getApplicationContext(), OnlineYoga.class);
+            startActivity(intent);
+        } else if (id == R.id.breathingExercise) {
+            Intent intent = new Intent(getApplicationContext(), BreathingActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.meditationCenter) {
+            Intent intent = new Intent(getApplicationContext(), Meditation.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

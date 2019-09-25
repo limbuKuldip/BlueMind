@@ -77,10 +77,12 @@ public class UserLogin extends AppCompatActivity {
         loginIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getData();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                /*getData();
                 if(validateInputs()){
                     login();
-                }
+                }*/
             }
         });
 

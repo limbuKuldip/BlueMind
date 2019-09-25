@@ -59,6 +59,14 @@
     <string name="thankyouMessage">Thank you for cooperating.\nYou will be redirected to your Home page shortly.</string>
     <string name="doneButton">Done</string>
 
+    <!-- Main Drawer -->
+    <string name="challengeCenter">Challenge Center</string>
+    <string name="depressionWorkshop">Depression Workshop</string>
+    <string name="onlineYoga">Online Yoga</string>
+    <string name="breathingExercise">Breathing Exercise</string>
+    <string name="professionalHelp">Professional Help</string>
+    <string name="meditationCenter">Meditation Center</string>
+
     <string name="writeamessage">Write a Message</string>
     <string name="book">Make an Appointment</string>
     <string name="selectDate">Select the date for appointment</string>
@@ -154,4 +162,8 @@
     <string name="comment">Comment</string>
     <string name="share">Share</string>
     <string name="urlHint">Insert a link</string>
+
+    <!-- About App -->
+    <string name="appName">Blue Mind</string>
+    <string name="versionNumber">Version 1.0</string>
 </resources>

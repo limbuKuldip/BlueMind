@@ -113,6 +113,8 @@
             android:name=".breathing.BreathingActivity"
             android:label="Breathing Activity" />
         <activity android:name=".breathing.BreathingExercise" />
+        <activity android:name=".About"
+            android:label="About"/>
     </application>
 
 </manifest>
