@@ -4,22 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.bluemind.bluemind.breathing.BreathingActivity;
-import com.bluemind.bluemind.breathing.BreathingExercise;
-import com.bluemind.bluemind.breathing.SetTimeFrame;
+import com.bluemind.bluemind.challenge_activity.ChallengesList;
 import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
 import com.bluemind.bluemind.expert_Consultation.ExpertConsultation;
 import com.bluemind.bluemind.meditation.Meditation;
 import com.bluemind.bluemind.online_yoga.OnlineYogaMain;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class ActivityList extends AppCompatActivity {
     private ImageButton challenges, depressionWorkshop, meditationCenter, breathingExercise, onlineYoga, expertHelp;

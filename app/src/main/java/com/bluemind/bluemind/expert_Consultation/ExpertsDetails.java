@@ -82,7 +82,8 @@ public class ExpertsDetails extends AppCompatActivity {
                 // Update the user's nickname
                 updateCurrentUserInfo(userNickname);
 
-                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ExpertConsultationChatActivity.class);
+                intent.putExtra("expert_name", expert_name);
                 startActivity(intent);
                 finish();
             }

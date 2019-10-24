@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/breathing_background"
+    android:background="@color/app_theme_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_height="80dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/playbutton"
-                android:background="@color/breathing_background"/>
+                android:background="@color/app_theme_background"/>
 
             <ImageButton
                 android:id="@+id/pauseButton"
@@ -57,7 +57,7 @@
                 android:src="@drawable/pausebutton"
                 android:layout_marginStart="12dp"
                 android:scaleType="fitCenter"
-                android:background="@color/breathing_background"/>
+                android:background="@color/app_theme_background"/>
 
             <ImageButton
                 android:id="@+id/stopButton"
@@ -65,7 +65,7 @@
                 android:layout_height="80dp"
                 android:layout_marginStart="12dp"
                 android:src="@drawable/stopbutton"
-                android:background="@color/breathing_background"
+                android:background="@color/app_theme_background"
                 android:scaleType="fitCenter"/>
         </LinearLayout>
     </LinearLayout>

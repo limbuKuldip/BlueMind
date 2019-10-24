@@ -45,7 +45,7 @@ public class ExpertConsultation extends AppCompatActivity {
     private static final String KEY_DATA = "data";
     private static final String KEY_EXPERT_NAME = "expert_name";
     private static final String KEY_EXPERT_TITLE = "expert_title";
-    private static final String url  = "https://bluemind.s3-ap-southeast-2.amazonaws.com/expertsList.json";
+    private static final String url  = "https://bluemind-bucket.s3-ap-southeast-2.amazonaws.com/expertsList.json";
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -57,22 +57,6 @@ public class ExpertConsultation extends AppCompatActivity {
         listAdapter = new ExpertsListAdapter(this, expertsLists);
         listView.setAdapter(listAdapter);
 
-        Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(url);
-        if (entry != null) {
-            // fetch the data from cache
-            try {
-                String data = new String(entry.data, "UTF-8");
-                try {
-                    parseJsonExpertList(new JSONObject(data));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-        } else {
             // making fresh volley request and getting json
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     url, null, new Response.Listener<JSONObject>() {
@@ -94,7 +78,6 @@ public class ExpertConsultation extends AppCompatActivity {
 
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
-        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

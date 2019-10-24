@@ -93,7 +93,7 @@ public class ConfirmAppointment extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getInt(KEY_STATUS) == 0) {
-                        Intent intent = new Intent(getApplicationContext(), ExpertConsultation.class);
+                        Intent intent = new Intent(getApplicationContext(), ConfirmationSplashScreen.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_LONG).show();

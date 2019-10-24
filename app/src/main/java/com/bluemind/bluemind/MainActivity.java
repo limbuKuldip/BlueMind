@@ -3,7 +3,6 @@ package com.bluemind.bluemind;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,18 +12,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bluemind.bluemind.breathing.BreathingActivity;
+import com.bluemind.bluemind.challenge_activity.ChallengesList;
 import com.bluemind.bluemind.chat.GroupChannelActivity;
 import com.bluemind.bluemind.chat.PreferenceUtils;
 import com.bluemind.bluemind.depression_workshop.DepressionWorkshop;
@@ -42,13 +42,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageButton activityButton, chatForumButton, postButton, aboutButton;
+    private Button likeButton;
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter feedListAdapter;
@@ -127,30 +127,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        likeButton = (Button) findViewById(R.id.likeButton);
+
         listView = (ListView) findViewById(R.id.newFeedListView);
         feedItemList = new ArrayList<FeedItem>();
 
         feedListAdapter = new FeedListAdapter(this, feedItemList);
         listView.setAdapter(feedListAdapter);
 
-        // We first check for cached request
-        Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(feedURL);
-        if (entry != null) {
-            // fetch the data from cache
-            try {
-                String data = new String(entry.data, "UTF-8");
-                try {
-                    parseJsonFeed(new JSONObject(data));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            // making fresh volley request and getting json
+        // making fresh volley request and getting json
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     feedURL, null, new Response.Listener<JSONObject>() {
 
@@ -171,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
-        }
 
     }
 
@@ -205,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 feedItemList.add(item);
             }
 
-            // notify data changes to list adapater
+            // notify data changes to list adapter
             feedListAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();

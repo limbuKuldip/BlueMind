@@ -6,9 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
@@ -19,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserLogin">
+        <activity android:name=".login.UserLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,20 +27,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IdentifyMe"
+            android:name=".identify_me.IdentifyMe"
             android:label="Identify Me">
         </activity>
         <activity
-            android:name=".IdentifyMe2"
+            android:name=".identify_me.IdentifyMe2"
             android:label="Identify Me" />
         <activity
-            android:name=".IdentifyMe3"
+            android:name=".identify_me.IdentifyMe3"
             android:label="Identify Me" />
         <activity
-            android:name=".IdentifyMeSplashScreen"
+            android:name=".identify_me.IdentifyMeSplashScreen"
             android:label="Identify Me" />
         <activity
-            android:name=".CreateAccount"
+            android:name=".login.CreateAccount"
             android:label="Create Account">
         </activity>
         <activity android:name=".MainActivity" />
@@ -61,19 +59,19 @@
         <activity android:name=".chat.GroupChannelActivity" />
         <activity android:name=".chat.CreateGroupChannelActivity"/>
         <activity
-            android:name=".Splash"
+            android:name=".challenge_activity.Splash"
             android:label="Blue Mind" />
         <activity
-            android:name=".ChallengesList"
+            android:name=".challenge_activity.ChallengesList"
             android:label="Challenges" />
         <activity
-            android:name=".ViewButton"
+            android:name=".challenge_activity.ViewButton"
             android:label="Blue Mind" />
         <activity
-            android:name=".CompleteButton"
+            android:name=".challenge_activity.CompleteButton"
             android:label="Blue Mind" />
         <activity
-            android:name=".ReviewScreen"
+            android:name=".challenge_activity.ReviewScreen"
             android:label="Blue Mind" />
         <activity
             android:name=".meditation.Meditation"
@@ -102,10 +100,13 @@
         <activity
             android:name=".expert_Consultation.ExpertsDetails"
             android:label="Experts Details" />
+        <activity android:name=".expert_Consultation.ExpertConsultationChatActivity"/>
         <activity android:name=".expert_Consultation.SetAppointmentDT"
             android:label="Make an Appointment"/>
         <activity android:name=".expert_Consultation.ConfirmAppointment"
             android:label="Confirm Appointment"/>
+        <activity android:name=".expert_Consultation.ConfirmationSplashScreen"
+            android:label="Expert Consultation"/>
         <activity
             android:name=".breathing.SetTimeFrame"
             android:label="Breathing Activity" />

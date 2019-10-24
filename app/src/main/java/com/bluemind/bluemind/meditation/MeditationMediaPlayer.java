@@ -1,8 +1,10 @@
 package com.bluemind.bluemind.meditation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +13,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -19,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bluemind.bluemind.MainActivity;
+import com.bluemind.bluemind.MySingleton;
 import com.bluemind.bluemind.R;
 import com.bluemind.bluemind.newsfeed.AppController;
 
@@ -44,10 +48,19 @@ public class MeditationMediaPlayer extends AppCompatActivity {
     private boolean isAnAmbientDay = false;
     private boolean isTranquality = false;
     private boolean isElvenFores = false;
+    private static final String USERNAME = "userName";
+    private static final String AUDIONAME = "audioName";
+    private static final String STATUS = "status";
+    private static final String MESSAGE = "message";
+    String audioName, userName;
+    private static final String link = "http://www.limbukuldip.com/meditationActivity.php";
     @Override
     protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.meditation_media_player);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        userName = preferences.getString("userId", null);
 
         List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
@@ -73,26 +86,38 @@ public class MeditationMediaPlayer extends AppCompatActivity {
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.quiet_time);
                     mediaPlayer.start();
                     isQuieTime = true;
+                    audioName = "Quiet Time";
+                    Record();
                 } else if(position == 1){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.deep_meditation);
                     mediaPlayer.start();
                     isDeepMeditation = true;
+                    audioName = "Deep Meditation";
+                    Record();
                 } else if(position == 2){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.healing_water);
                     mediaPlayer.start();
                     isHealingWater = true;
+                    audioName = "Healing Water";
+                    Record();
                 } else if(position == 3){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.an_ambient_day);
                     mediaPlayer.start();
                     isAnAmbientDay = true;
+                    audioName = "An Ambient Day";
+                    Record();
                 } else if(position == 4){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.tranqality);
                     mediaPlayer.start();
                     isTranquality = true;
+                    audioName = "Tranquality";
+                    Record();
                 } else if(position == 5){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.elven_forest);
                     mediaPlayer.start();
                     isElvenFores = true;
+                    audioName = "Elven Forest";
+                    Record();
                 }
             }
         });
@@ -143,5 +168,35 @@ public class MeditationMediaPlayer extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void Record(){
+        final JSONObject request = new JSONObject();
+        try{
+            request.put(USERNAME, userName);
+            request.put(AUDIONAME, audioName);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, link, request, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try{
+                   if(response.getInt(STATUS) == 0){
+
+                   }else{
+                       Toast.makeText(getApplicationContext(), response.getString(MESSAGE), Toast.LENGTH_LONG).show();
+                   }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

@@ -7,9 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.bluemind.bluemind.MainActivity;
+import com.bluemind.bluemind.MySingleton;
 import com.bluemind.bluemind.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BreathingExercise extends AppCompatActivity {
     private EditText inhaleET, exhaleET;
@@ -17,6 +26,8 @@ public class BreathingExercise extends AppCompatActivity {
     CountDownTimer timer, timer2;
     private boolean timerIsRunning = false;
     private boolean timer2IsRunning = false;
+    int inhaleSeconds, exhaleSeconds;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +105,7 @@ public class BreathingExercise extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

@@ -4,6 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bluemind.bluemind.R;
 
@@ -12,11 +18,17 @@ import java.util.Vector;
 public class OnlineYogaMain extends AppCompatActivity {
     RecyclerView recyclerView;
     Vector<OnlineYoga> onlineYogas = new Vector<OnlineYoga>();
+    View childView;
+    int RecyclerViewItemPosition;
+    LinearLayout mainLayout, subLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.online_yoga);
+
+        mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        subLayout = (LinearLayout) findViewById(R.id.subLayout);
 
         recyclerView = (RecyclerView) findViewById(R.id.online_yogaRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -35,5 +47,32 @@ public class OnlineYogaMain extends AppCompatActivity {
 
         OnlineYogaAdapter adapter = new OnlineYogaAdapter(onlineYogas);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            GestureDetector gestureDetector = new GestureDetector(OnlineYogaMain.this, new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+            });
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                childView = rv.findChildViewUnder(e.getX(), e.getY());
+                if(childView != null && gestureDetector.onTouchEvent(e)){
+                    RecyclerViewItemPosition = rv.getChildAdapterPosition(childView);
+                    //Toast.makeText(getApplicationContext(), rv.getAdapter().toString(), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 }

@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Blue Mind</string>
+    <string name="pref_previously_started">previouslyStarted</string>
+
+    <!-- Challenge Activity -->
     <string name="heyuser">Hey User</string>
     <string name="itsshowtime">It\'s Show Time!</string>
     <string name="yourActivities">Your Activities</string>
-    <string name="activityone">Go For a 10 min bike ride and express your feelings</string>
-    <string name="activitytwo">Activity 2</string>
-    <string name="activitythree">Activity 3</string>
-    <string name="activityfour">Activity 4</string>
-    <string name="activityfive">Activity 5</string>
+    <string name="activityone">Go For a 10 Minutes Bike Ride</string>
+    <string name="activitytwo">Go Outside, Join Any Group And Have Conversation</string>
+    <string name="activitythree">Visit a Nearby Park And Take Some Photos</string>
+    <string name="activityfour">Search Online And Apply For Volunteering</string>
+    <string name="activityfive">Visit Any Events And Take Some Photos</string>
     <string name="complete">Complete</string>
     <string name="view">View</string>
     <string name="viewTitle">Bike Ride Activities</string>
@@ -18,7 +21,7 @@
     <string name="uploadStepCount"> • Upload Step Count</string>
     <string name="uploadMileageCount"> • Upload Mileage Count</string>
     <string name="otherRequirements"> • Other Requirements</string>
-    <string name="submit">Do you want to submit your data?</string>
+    <string name="submit">What you did?</string>
     <string name="howwas">How was the activity?</string>
     <string name="uploadaproof">Upload a proof that you have completed the activity?</string>
     <string name="upload">Upload</string>
@@ -75,6 +78,7 @@
     <string name="appointmentEmail">Email: </string>
     <string name="appointmentDate">Appointment Date: </string>
     <string name="appointmentTime">Appointment Time: </string>
+    <string name="thankYouMessageAppointment">Thank You For Your Booking. We Will Confirm \nAnd Mail You Back.</string>
     <string name="confirm">Confirm</string>
     <string name="chat">Chat</string>
     <string name="Andrew">Andrew Johnson</string>
